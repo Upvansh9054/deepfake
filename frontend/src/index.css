@@ -1,0 +1,604 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+   LIGHT BLUE THEME (Deepfake Shield Enterprise Clean Light)
+   Transforms the dark cybersecurity UI into an attractive, 
+   crisp, modern Light Blue & Clean White interface.
+   ============================================================ */
+
+.theme-light-blue,
+.theme-light-blue body {
+  background-color: #F0F6FC !important;
+  color: #0F172A !important;
+}
+
+/* Base Canvas */
+.theme-light-blue .bg-\[\#0B0F17\],
+.theme-light-blue [class*="bg-[#0B0F17]"] {
+  background: linear-gradient(135deg, #F0F7FF 0%, #E8F2FA 45%, #F4F8FD 100%) !important;
+  color: #0F172A !important;
+}
+
+/* Sidebar */
+.theme-light-blue aside,
+.theme-light-blue .bg-\[\#0D131F\],
+.theme-light-blue [class*="bg-[#0D131F]"] {
+  background-color: #FFFFFF !important;
+  border-right-color: #BAE6FD !important;
+  box-shadow: 2px 0 14px rgba(186, 230, 253, 0.28) !important;
+}
+
+.theme-light-blue aside .border-gray-800\/80 {
+  border-color: #E2E8F0 !important;
+}
+
+/* Navbar */
+.theme-light-blue header,
+.theme-light-blue .bg-\[\#0F172A\]\/90,
+.theme-light-blue [class*="bg-[#0F172A]"] {
+  background-color: #FFFFFF !important;
+  border-bottom: 1px solid #BAE6FD !important;
+  backdrop-filter: blur(14px) !important;
+  box-shadow: 0 1px 6px rgba(186, 230, 253, 0.22) !important;
+}
+
+.theme-light-blue header .bg-clip-text {
+  background: linear-gradient(135deg, #0284C7 0%, #1E40AF 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+
+/* All Cards, Panels & Modals */
+.theme-light-blue .bg-\[\#111827\],
+.theme-light-blue [class*="bg-[#111827]"],
+.theme-light-blue [class*="bg-gray-900"],
+.theme-light-blue [class*="bg-gray-950"],
+.theme-light-blue .bg-gradient-to-br[class*="from-[#111827]"]:not(.dashboard-hf-card):not(.dashboard-realtime-card) {
+  background-color: #FFFFFF !important;
+  border-color: #DBEAFE !important;
+  box-shadow: 0 2px 12px rgba(191, 219, 254, 0.22) !important;
+}
+
+.theme-light-blue .bg-gray-800,
+.theme-light-blue [class*="bg-gray-800"],
+.theme-light-blue .bg-gray-850 {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+}
+
+.theme-light-blue .bg-gray-700 {
+  background-color: #E2E8F0 !important;
+}
+
+/* All Gray Borders Converted to Soft Sky */
+.theme-light-blue [class*="border-gray-"] {
+  border-color: #DBEAFE !important;
+}
+
+/* High-Contrast Typography */
+.theme-light-blue .text-gray-100,
+.theme-light-blue .text-gray-200,
+.theme-light-blue .text-slate-100,
+.theme-light-blue .text-slate-200,
+.theme-light-blue h1,
+.theme-light-blue h2,
+.theme-light-blue h3,
+.theme-light-blue h4 {
+  color: #0F172A !important;
+}
+
+.theme-light-blue .text-gray-300,
+.theme-light-blue .text-slate-300 {
+  color: #1E293B !important;
+}
+
+.theme-light-blue .text-gray-400,
+.theme-light-blue .text-slate-400 {
+  color: #334155 !important;
+}
+
+.theme-light-blue .text-gray-500,
+.theme-light-blue .text-slate-500 {
+  color: #475569 !important;
+}
+
+.theme-light-blue .text-gray-600 {
+  color: #64748B !important;
+}
+
+/* Vibrant Blue Accents */
+.theme-light-blue .text-cyan-400 {
+  color: #0284C7 !important;
+}
+
+.theme-light-blue .text-cyan-300 {
+  color: #0369A1 !important;
+}
+
+.theme-light-blue .text-indigo-400 {
+  color: #2563EB !important;
+}
+
+.theme-light-blue .text-indigo-300 {
+  color: #1D4ED8 !important;
+}
+
+.theme-light-blue .bg-cyan-500\/10,
+.theme-light-blue .bg-cyan-500\/15,
+.theme-light-blue .bg-cyan-500\/20,
+.theme-light-blue .bg-cyan-950\/20,
+.theme-light-blue .bg-cyan-950\/30,
+.theme-light-blue .bg-cyan-950\/40 {
+  background-color: #E0F2FE !important;
+  border-color: #BAE6FD !important;
+}
+
+.theme-light-blue .border-cyan-500\/20,
+.theme-light-blue .border-cyan-500\/30 {
+  border-color: #7DD3FC !important;
+}
+
+/* Dark 950 Tints Converted to Clean Attractive Pastels */
+.theme-light-blue [class*="bg-red-950"] {
+  background-color: #FEF2F2 !important;
+  border-color: #FECACA !important;
+  color: #DC2626 !important;
+}
+
+.theme-light-blue [class*="bg-pink-950"] {
+  background-color: #FDF2F8 !important;
+  border-color: #FBCFE8 !important;
+  color: #DB2777 !important;
+}
+
+.theme-light-blue [class*="bg-cyan-950"] {
+  background-color: #ECFEFF !important;
+  border-color: #BAE6FD !important;
+  color: #0284C7 !important;
+}
+
+.theme-light-blue [class*="bg-indigo-950"] {
+  background-color: #EEF2FF !important;
+  border-color: #C7D2FE !important;
+  color: #2563EB !important;
+}
+
+.theme-light-blue [class*="bg-purple-950"] {
+  background-color: #FAF5FF !important;
+  border-color: #E9D5FF !important;
+  color: #7E22CE !important;
+}
+
+.theme-light-blue [class*="bg-emerald-950"] {
+  background-color: #ECFDF5 !important;
+  border-color: #A7F3D0 !important;
+  color: #059669 !important;
+}
+
+.theme-light-blue [class*="bg-amber-950"] {
+  background-color: #FFFBEB !important;
+  border-color: #FDE68A !important;
+  color: #D97706 !important;
+}
+
+/* Floating Video HUD Tickers, Camera Overlays & Media Badges (Always Bright on Dark Glass) */
+.theme-light-blue .video-telemetry-hud,
+.theme-light-blue .video-telemetry-hud *,
+.theme-light-blue [class*="bg-black/"],
+.theme-light-blue [class*="bg-black/"] *,
+.theme-light-blue [class*="bg-slate-950/"],
+.theme-light-blue [class*="bg-slate-950/"] * {
+  color: #FFFFFF !important;
+}
+
+.theme-light-blue .video-telemetry-hud .text-sky-300,
+.theme-light-blue .video-telemetry-hud .text-cyan-400,
+.theme-light-blue [class*="bg-black/"] .text-cyan-400,
+.theme-light-blue [class*="bg-slate-950/"] .text-sky-300 {
+  color: #38BDF8 !important;
+}
+
+.theme-light-blue .video-telemetry-hud .text-emerald-300,
+.theme-light-blue .video-telemetry-hud .text-emerald-400,
+.theme-light-blue [class*="bg-black/"] .text-emerald-400,
+.theme-light-blue [class*="bg-slate-950/"] .text-emerald-300 {
+  color: #34D399 !important;
+}
+
+.theme-light-blue .video-telemetry-hud .text-slate-300,
+.theme-light-blue .video-telemetry-hud .text-gray-400,
+.theme-light-blue [class*="bg-black/"] .text-gray-400,
+.theme-light-blue [class*="bg-slate-950/"] .text-slate-300 {
+  color: #CBD5E1 !important;
+}
+
+.theme-light-blue .video-telemetry-hud .text-slate-500,
+.theme-light-blue [class*="bg-black/"] .text-gray-600,
+.theme-light-blue [class*="bg-slate-950/"] .text-slate-500 {
+  color: #64748B !important;
+}
+
+/* Sidebar Navigation Items */
+.theme-light-blue nav a.sidebar-nav-inactive,
+.theme-light-blue nav a:not(.sidebar-nav-active):not(.active) {
+  background-color: transparent !important;
+  color: #475569 !important;
+  border: 1px solid transparent !important;
+  box-shadow: none !important;
+}
+
+.theme-light-blue nav a.sidebar-nav-inactive:hover,
+.theme-light-blue nav a:not(.sidebar-nav-active):not(.active):hover {
+  background-color: #F0F9FF !important;
+  color: #0284C7 !important;
+  border-color: #BAE6FD !important;
+}
+
+.theme-light-blue nav a.sidebar-nav-active,
+.theme-light-blue nav a.active {
+  background: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%) !important;
+  color: #0369A1 !important;
+  border-color: #7DD3FC !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 8px rgba(186, 230, 253, 0.45) !important;
+}
+
+.theme-light-blue nav a.sidebar-nav-active * {
+  color: #0369A1 !important;
+}
+
+.theme-light-blue nav a.sidebar-nav-inactive:hover * {
+  color: #0284C7 !important;
+}
+
+/* Sidebar "Shield Defense Active" Banner */
+.theme-light-blue aside .bg-gradient-to-br {
+  background: linear-gradient(135deg, #E0F2FE 0%, #EFF6FF 50%, #F0F9FF 100%) !important;
+  border-color: #BAE6FD !important;
+  box-shadow: 0 2px 10px rgba(186, 230, 253, 0.25) !important;
+}
+
+.theme-light-blue aside .bg-gradient-to-br p {
+  color: #475569 !important;
+}
+
+/* Sidebar Bottom Telemetry Card in Light Blue Theme */
+.theme-light-blue aside .bg-\[\#0B0F17\]\/40 {
+  background-color: #F8FAFC !important;
+  border-top-color: #E2E8F0 !important;
+}
+
+.theme-light-blue aside .bg-gray-900\/60 {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F0F9FF 100%) !important;
+  border-color: #BAE6FD !important;
+  box-shadow: 0 1px 4px rgba(186, 230, 253, 0.2) !important;
+}
+
+.theme-light-blue aside .bg-gray-900\/60 span.text-gray-300 {
+  color: #0F172A !important;
+}
+
+.theme-light-blue aside .bg-gray-900\/60 span.text-gray-500 {
+  color: #64748B !important;
+}
+
+/* Dashboard Welcome Banner */
+.theme-light-blue .bg-gradient-to-r.from-gray-900 {
+  background: linear-gradient(135deg, #0284C7 0%, #0369A1 50%, #1E40AF 100%) !important;
+  border-color: #38BDF8 !important;
+  box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.25) !important;
+}
+
+.theme-light-blue .bg-gradient-to-r.from-gray-900 * {
+  color: #FFFFFF !important;
+}
+
+.theme-light-blue .bg-gradient-to-r.from-gray-900 .text-cyan-400 {
+  color: #BAE6FD !important;
+}
+
+.theme-light-blue .bg-gradient-to-r.from-gray-900 .text-gray-400 {
+  color: #E0F2FE !important;
+}
+
+/* Dashboard Quick Action Cards in Light Blue Theme */
+.theme-light-blue .dashboard-hf-card {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F5F3FF 50%, #EEF2FF 100%) !important;
+  border-color: #C7D2FE !important;
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.12) !important;
+}
+
+.theme-light-blue .dashboard-hf-card h3 {
+  color: #0F172A !important;
+  font-weight: 700 !important;
+}
+
+.theme-light-blue .dashboard-hf-card p {
+  color: #334155 !important;
+  font-weight: 500 !important;
+}
+
+.theme-light-blue .dashboard-hf-card a {
+  background-color: #4F46E5 !important;
+  color: #FFFFFF !important;
+  border-color: #4338CA !important;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25) !important;
+}
+
+.theme-light-blue .dashboard-hf-card a:hover {
+  background-color: #4338CA !important;
+  color: #FFFFFF !important;
+}
+
+.theme-light-blue .dashboard-realtime-card {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F0F9FF 50%, #E0F2FE 100%) !important;
+  border-color: #BAE6FD !important;
+  box-shadow: 0 4px 16px rgba(2, 132, 199, 0.12) !important;
+}
+
+.theme-light-blue .dashboard-realtime-card h3 {
+  color: #0F172A !important;
+  font-weight: 700 !important;
+}
+
+.theme-light-blue .dashboard-realtime-card p {
+  color: #334155 !important;
+  font-weight: 500 !important;
+}
+
+.theme-light-blue .dashboard-realtime-card a {
+  background-color: #0284C7 !important;
+  color: #FFFFFF !important;
+  border-color: #0369A1 !important;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25) !important;
+}
+
+.theme-light-blue .dashboard-realtime-card a:hover {
+  background-color: #0369A1 !important;
+  color: #FFFFFF !important;
+}
+
+/* Dashboard Hero Banner in Light Blue Theme */
+.theme-light-blue .dashboard-hero-banner {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 55%, #F0F9FF 100%) !important;
+  border-color: #BAE6FD !important;
+  box-shadow: 0 4px 18px rgba(186, 230, 253, 0.28) !important;
+}
+
+.theme-light-blue .dashboard-hero-banner h1 {
+  color: #0F172A !important;
+}
+
+.theme-light-blue .dashboard-hero-banner p {
+  color: #475569 !important;
+}
+
+.theme-light-blue .dashboard-hero-banner a {
+  background-color: #FFFFFF !important;
+  border-color: #DBEAFE !important;
+  color: #1E293B !important;
+  box-shadow: 0 1px 3px rgba(186, 230, 253, 0.2) !important;
+}
+
+.theme-light-blue .dashboard-hero-banner a:hover {
+  background-color: #F0F9FF !important;
+  border-color: #7DD3FC !important;
+  color: #0284C7 !important;
+}
+
+.theme-light-blue .dashboard-hero-banner a[href*="multimodal"] {
+  background: #0284C7 !important;
+  border-color: #0284C7 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25) !important;
+}
+
+.theme-light-blue .dashboard-hero-banner a[href*="multimodal"] * {
+  color: #FFFFFF !important;
+}
+
+.theme-light-blue .dashboard-hero-banner a[href*="multimodal"]:hover {
+  background: #0369A1 !important;
+}
+
+/* Dashboard KPI Metric Cards */
+.theme-light-blue .dashboard-kpi-card {
+  background: #FFFFFF !important;
+  border-color: #DBEAFE !important;
+  box-shadow: 0 4px 18px rgba(186, 230, 253, 0.32) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.theme-light-blue .dashboard-kpi-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(186, 230, 253, 0.5) !important;
+}
+
+.theme-light-blue .dashboard-kpi-card .border-t-sky-500 {
+  border-top-color: #0284C7 !important;
+}
+
+.theme-light-blue .dashboard-kpi-card .border-t-rose-500 {
+  border-top-color: #F43F5E !important;
+}
+
+.theme-light-blue .dashboard-kpi-card .border-t-amber-500 {
+  border-top-color: #F59E0B !important;
+}
+
+.theme-light-blue .dashboard-kpi-card .border-t-emerald-500 {
+  border-top-color: #10B981 !important;
+}
+
+/* Dashboard Table Card */
+.theme-light-blue .dashboard-table-card {
+  background: #FFFFFF !important;
+  border-color: #DBEAFE !important;
+  box-shadow: 0 4px 20px rgba(186, 230, 253, 0.3) !important;
+}
+
+/* Form inputs & selects */
+.theme-light-blue input,
+.theme-light-blue textarea,
+.theme-light-blue select {
+  background-color: #F8FAFC !important;
+  color: #0F172A !important;
+  border-color: #BAE6FD !important;
+  box-shadow: inset 0 1px 2px rgba(186, 230, 253, 0.15) !important;
+}
+
+.theme-light-blue input:focus,
+.theme-light-blue textarea:focus,
+.theme-light-blue select:focus {
+  background-color: #FFFFFF !important;
+  border-color: #0284C7 !important;
+  outline: 2px solid rgba(2, 132, 199, 0.2) !important;
+}
+
+.theme-light-blue input::placeholder,
+.theme-light-blue textarea::placeholder {
+  color: #94A3B8 !important;
+}
+
+/* Dropdown menus & popups */
+.theme-light-blue .shadow-2xl {
+  background-color: #FFFFFF !important;
+  border-color: #BAE6FD !important;
+  box-shadow: 0 12px 30px rgba(186, 230, 253, 0.45) !important;
+}
+
+/* Tables in Dashboard & Scan History */
+.theme-light-blue table,
+.theme-light-blue .divide-y > * {
+  border-color: #E2E8F0 !important;
+}
+
+.theme-light-blue th {
+  background-color: #F0F9FF !important;
+  color: #0369A1 !important;
+}
+
+.theme-light-blue tr:hover {
+  background-color: #F8FAFC !important;
+}
+
+/* Scanners (Video & Audio Dropzones) */
+.theme-light-blue .border-dashed {
+  background-color: #F8FBFF !important;
+  border-color: #7DD3FC !important;
+}
+
+.theme-light-blue .border-dashed:hover {
+  background-color: #F0F9FF !important;
+  border-color: #0284C7 !important;
+}
+
+/* Secondary Buttons */
+.theme-light-blue button.bg-gray-800,
+.theme-light-blue .bg-gray-800.hover\:bg-gray-700 {
+  background-color: #F0F9FF !important;
+  border-color: #BAE6FD !important;
+  color: #0369A1 !important;
+}
+
+.theme-light-blue button.bg-gray-800:hover,
+.theme-light-blue .bg-gray-800.hover\:bg-gray-700:hover {
+  background-color: #E0F2FE !important;
+}
+
+/* Scan Results Verdict Banners */
+.theme-light-blue .from-red-950\/80 {
+  background: linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 50%, #FFF1F2 100%) !important;
+  border-color: #F87171 !important;
+}
+
+.theme-light-blue .from-red-950\/80 .text-red-300,
+.theme-light-blue .from-red-950\/80 .text-red-400 {
+  color: #DC2626 !important;
+}
+
+.theme-light-blue .from-emerald-950\/80 {
+  background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 50%, #F0FDF4 100%) !important;
+  border-color: #34D399 !important;
+}
+
+.theme-light-blue .from-emerald-950\/80 .text-emerald-300,
+.theme-light-blue .from-emerald-950\/80 .text-emerald-400 {
+  color: #059669 !important;
+}
+
+.theme-light-blue .from-amber-950\/80 {
+  background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 50%, #FFFDF0 100%) !important;
+  border-color: #FBBF24 !important;
+}
+
+.theme-light-blue .from-amber-950\/80 .text-amber-300,
+.theme-light-blue .from-amber-950\/80 .text-amber-400 {
+  color: #D97706 !important;
+}
+
+/* Scrollbars */
+.theme-light-blue ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.theme-light-blue ::-webkit-scrollbar-track {
+  background: #F0F7FF;
+}
+
+.theme-light-blue ::-webkit-scrollbar-thumb {
+  background: #BAE6FD;
+  border-radius: 4px;
+}
+
+.theme-light-blue ::-webkit-scrollbar-thumb:hover {
+  background: #7DD3FC;
+}
+
+/* Print Overrides */
+@media print {
+  nav, aside, .no-print, header, footer, button {
+    display: none !important;
+  }
+
+  body {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+    font-size: 10pt;
+  }
+
+  .printable-report {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 10px !important;
+    background: #ffffff !important;
+    color: #111827 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  .printable-card {
+    background: #f9fafb !important;
+    color: #111827 !important;
+    border: 1px solid #d1d5db !important;
+    page-break-inside: avoid;
+  }
+
+  a {
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+}

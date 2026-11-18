@@ -1,0 +1,16 @@
+# Deepfake Shield - Machine Learning & Signal Processing Dependencies
+# NOTE: Requires Python 3.10 or 3.11 for prebuilt wheel compatibility on Windows/Linux.
+numpy>=1.24.3,<2.0.0
+scipy>=1.11.4
+torch>=2.2.0
+torchaudio>=2.2.0
+torchvision>=0.17.0
+transformers>=4.41.0
+huggingface-hub>=0.23.0
+librosa>=0.10.2
+soundfile>=0.12.1
+opencv-python-headless>=4.9.0.80
+mediapipe>=0.10.14; sys_platform != 'win32' or python_version < '3.12'
+timm>=1.0.3
+onnxruntime>=1.18.0
+
