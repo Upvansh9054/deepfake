@@ -1,8 +1,44 @@
 // Deepfake Shield API Client Service
 
-const API_BASE = import.meta.env.VITE_API_URL
-  ? `${(import.meta.env.VITE_API_URL as string).replace(/\/$/, '')}/api/v1`
-  : '/api/v1';
+export function getApiBaseUrl(): string {
+  // 1. Vite environment variable
+  if (import.meta.env.VITE_API_URL && (import.meta.env.VITE_API_URL as string).trim()) {
+    return `${(import.meta.env.VITE_API_URL as string).trim().replace(/\/$/, '')}/api/v1`;
+  }
+  // 2. Custom backend URL stored in localStorage
+  if (typeof window !== 'undefined') {
+    const custom = localStorage.getItem('dfs_backend_url');
+    if (custom && custom.trim()) {
+      return `${custom.trim().replace(/\/$/, '')}/api/v1`;
+    }
+  }
+  // 3. Fallback relative path
+  return '/api/v1';
+}
+
+export function getRawBackendUrl(): string {
+  if (typeof window !== 'undefined') {
+    const custom = localStorage.getItem('dfs_backend_url');
+    if (custom && custom.trim()) {
+      return custom.trim().replace(/\/$/, '');
+    }
+  }
+  if (import.meta.env.VITE_API_URL && (import.meta.env.VITE_API_URL as string).trim()) {
+    return (import.meta.env.VITE_API_URL as string).trim().replace(/\/$/, '');
+  }
+  return '';
+}
+
+export function setCustomBackendUrl(url: string) {
+  if (typeof window !== 'undefined') {
+    const clean = url.trim().replace(/\/$/, '');
+    if (clean) {
+      localStorage.setItem('dfs_backend_url', clean);
+    } else {
+      localStorage.removeItem('dfs_backend_url');
+    }
+  }
+}
 
 export function getAuthToken(): string | null {
   return localStorage.getItem('dfs_token');
@@ -32,8 +68,10 @@ async function request<T>(endpoint: string, options: RequestInit = {}): Promise<
     (headers as Record<string, string>)['Content-Type'] = 'application/json';
   }
 
+  const apiBase = getApiBaseUrl();
+  const targetUrl = `${apiBase}${endpoint}`;
+
   let response: Response;
-  const targetUrl = `${API_BASE}${endpoint}`;
   try {
     response = await fetch(targetUrl, {
       ...options,
@@ -41,14 +79,14 @@ async function request<T>(endpoint: string, options: RequestInit = {}): Promise<
     });
   } catch {
     throw new Error(
-      `Unable to connect to Deepfake Shield API at ${API_BASE}. Please verify backend is running.`
+      `Unable to connect to backend at ${apiBase}. Please verify your server URL and that it is active.`
     );
   }
 
   if (!response.ok) {
     if (response.status === 405) {
       throw new Error(
-        `HTTP 405 Method Not Allowed: The frontend is currently making requests to "${targetUrl}" (Vercel) instead of your Render backend. Please ensure VITE_API_URL is saved as "Config" in Vercel Settings -> Environment Variables, and redeploy with build cache cleared.`
+        `Backend URL missing or routing to Vercel (HTTP 405). Please configure your Render backend URL below.`
       );
     }
     let errorDetail = `HTTP error ${response.status}`;
