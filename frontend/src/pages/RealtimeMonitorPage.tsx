@@ -216,9 +216,18 @@ export const RealtimeMonitorPage: React.FC = () => {
 
   // 6. Connect WebSocket for Signaling & Live Telemetry
   const connectWebSocket = useCallback((stream: MediaStream) => {
-    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    const host = window.location.host;
-    const wsUrl = `${protocol}//${host}/api/v1/stream/call/${encodeURIComponent(roomId)}`;
+    let wsHost = window.location.host;
+    let wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+    if (import.meta.env.VITE_API_URL) {
+      try {
+        const apiUrl = new URL(import.meta.env.VITE_API_URL as string);
+        wsHost = apiUrl.host;
+        wsProtocol = apiUrl.protocol === 'https:' ? 'wss:' : 'ws:';
+      } catch {
+        // fallback to window.location
+      }
+    }
+    const wsUrl = `${wsProtocol}//${wsHost}/api/v1/stream/call/${encodeURIComponent(roomId)}`;
 
     setWsStatus('connecting');
     const ws = new WebSocket(wsUrl);
