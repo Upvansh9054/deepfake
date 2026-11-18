@@ -1,18 +1,27 @@
 // Deepfake Shield API Client Service
 
+export const DEFAULT_PRODUCTION_BACKEND = 'https://deepfake-b11f.onrender.com';
+
 export function getApiBaseUrl(): string {
-  // 1. Vite environment variable
-  if (import.meta.env.VITE_API_URL && (import.meta.env.VITE_API_URL as string).trim()) {
-    return `${(import.meta.env.VITE_API_URL as string).trim().replace(/\/$/, '')}/api/v1`;
+  // 1. Vite environment variable (correcting any b1lf typo to b11f)
+  const envUrl = import.meta.env.VITE_API_URL as string | undefined;
+  if (envUrl && envUrl.trim()) {
+    const sanitized = envUrl.trim().replace(/\/$/, '').replace('deepfake-b1lf', 'deepfake-b11f');
+    return `${sanitized}/api/v1`;
   }
   // 2. Custom backend URL stored in localStorage
   if (typeof window !== 'undefined') {
     const custom = localStorage.getItem('dfs_backend_url');
     if (custom && custom.trim()) {
-      return `${custom.trim().replace(/\/$/, '')}/api/v1`;
+      const sanitized = custom.trim().replace(/\/$/, '').replace('deepfake-b1lf', 'deepfake-b11f');
+      return `${sanitized}/api/v1`;
     }
   }
-  // 3. Fallback relative path
+  // 3. Auto-fallback to live Render backend if hosted on Vercel
+  if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    return `${DEFAULT_PRODUCTION_BACKEND}/api/v1`;
+  }
+  // 4. Fallback relative path for local proxy
   return '/api/v1';
 }
 
@@ -20,11 +29,15 @@ export function getRawBackendUrl(): string {
   if (typeof window !== 'undefined') {
     const custom = localStorage.getItem('dfs_backend_url');
     if (custom && custom.trim()) {
-      return custom.trim().replace(/\/$/, '');
+      return custom.trim().replace(/\/$/, '').replace('deepfake-b1lf', 'deepfake-b11f');
     }
   }
-  if (import.meta.env.VITE_API_URL && (import.meta.env.VITE_API_URL as string).trim()) {
-    return (import.meta.env.VITE_API_URL as string).trim().replace(/\/$/, '');
+  const envUrl = import.meta.env.VITE_API_URL as string | undefined;
+  if (envUrl && envUrl.trim()) {
+    return envUrl.trim().replace(/\/$/, '').replace('deepfake-b1lf', 'deepfake-b11f');
+  }
+  if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
+    return DEFAULT_PRODUCTION_BACKEND;
   }
   return '';
 }

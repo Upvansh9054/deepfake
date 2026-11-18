@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { getRawBackendUrl } from '../services/api';
 import {
   Activity,
   Video,
@@ -218,9 +219,10 @@ export const RealtimeMonitorPage: React.FC = () => {
   const connectWebSocket = useCallback((stream: MediaStream) => {
     let wsHost = window.location.host;
     let wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    if (import.meta.env.VITE_API_URL) {
+    const backendBase = getRawBackendUrl();
+    if (backendBase) {
       try {
-        const apiUrl = new URL(import.meta.env.VITE_API_URL as string);
+        const apiUrl = new URL(backendBase);
         wsHost = apiUrl.host;
         wsProtocol = apiUrl.protocol === 'https:' ? 'wss:' : 'ws:';
       } catch {
