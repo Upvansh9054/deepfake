@@ -33,18 +33,24 @@ async function request<T>(endpoint: string, options: RequestInit = {}): Promise<
   }
 
   let response: Response;
+  const targetUrl = `${API_BASE}${endpoint}`;
   try {
-    response = await fetch(`${API_BASE}${endpoint}`, {
+    response = await fetch(targetUrl, {
       ...options,
       headers,
     });
-  } catch (err: any) {
+  } catch {
     throw new Error(
-      'Unable to connect to Deepfake Shield API. Please verify the backend server is running on http://localhost:8000.'
+      `Unable to connect to Deepfake Shield API at ${API_BASE}. Please verify backend is running.`
     );
   }
 
   if (!response.ok) {
+    if (response.status === 405) {
+      throw new Error(
+        `HTTP 405 Method Not Allowed: The frontend is currently making requests to "${targetUrl}" (Vercel) instead of your Render backend. Please ensure VITE_API_URL is saved as "Config" in Vercel Settings -> Environment Variables, and redeploy with build cache cleared.`
+      );
+    }
     let errorDetail = `HTTP error ${response.status}`;
     try {
       const rawText = await response.text();
