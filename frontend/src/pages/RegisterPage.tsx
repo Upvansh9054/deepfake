@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Shield, Lock, Mail, User, ArrowRight, AlertCircle, Globe, Check, Settings } from 'lucide-react';
+import { Shield, Lock, Mail, User, ArrowRight, AlertCircle } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-import { getRawBackendUrl, setCustomBackendUrl } from '../services/api';
 
 export const RegisterPage: React.FC = () => {
   const navigate = useNavigate();
@@ -13,9 +12,6 @@ export const RegisterPage: React.FC = () => {
   const [role, setRole] = useState('user');
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [customBackend, setCustomBackend] = useState(getRawBackendUrl());
-  const [showBackendConfig, setShowBackendConfig] = useState(false);
-  const [backendSavedMsg, setBackendSavedMsg] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -60,46 +56,6 @@ export const RegisterPage: React.FC = () => {
             <div className="mb-4 p-3 rounded-lg bg-red-950/40 border border-red-800/50 flex items-start space-x-2.5 text-xs text-red-300">
               <AlertCircle className="w-4 h-4 text-red-400 mt-0.5 flex-shrink-0" />
               <span>{error}</span>
-            </div>
-          )}
-
-          {(error?.includes('405') || showBackendConfig || !customBackend) && (
-            <div className="mb-5 p-3.5 rounded-xl bg-gray-900/90 border border-cyan-500/30 text-xs shadow-inner">
-              <div className="flex items-center justify-between text-cyan-300 font-semibold mb-1.5">
-                <span className="flex items-center gap-1.5">
-                  <Globe className="w-3.5 h-3.5 text-cyan-400" />
-                  Render Backend URL
-                </span>
-                {backendSavedMsg && (
-                  <span className="text-emerald-400 text-[11px] font-medium flex items-center gap-1">
-                    <Check className="w-3 h-3" /> Connected!
-                  </span>
-                )}
-              </div>
-              <p className="text-[11px] text-gray-400 mb-2 leading-relaxed">
-                Paste your live Render backend URL (e.g. <span className="text-cyan-300">https://deepfake-xxxx.onrender.com</span>):
-              </p>
-              <div className="flex gap-2">
-                <input
-                  type="url"
-                  value={customBackend}
-                  onChange={(e) => setCustomBackend(e.target.value)}
-                  placeholder="https://deepfake-xxxx.onrender.com"
-                  className="flex-1 bg-gray-950 border border-gray-700 rounded-lg px-2.5 py-1.5 text-xs text-gray-200 placeholder-gray-600 focus:outline-none focus:border-cyan-500"
-                />
-                <button
-                  type="button"
-                  onClick={() => {
-                    setCustomBackendUrl(customBackend);
-                    setBackendSavedMsg(true);
-                    setError(null);
-                    setTimeout(() => setBackendSavedMsg(false), 3000);
-                  }}
-                  className="bg-cyan-600 hover:bg-cyan-500 text-white font-semibold px-3 py-1.5 rounded-lg text-xs transition whitespace-nowrap shadow"
-                >
-                  Save & Connect
-                </button>
-              </div>
             </div>
           )}
 
@@ -176,17 +132,6 @@ export const RegisterPage: React.FC = () => {
             <Link to="/login" className="text-cyan-400 hover:text-cyan-300 font-semibold">
               Sign In
             </Link>
-          </div>
-
-          <div className="mt-4 text-center">
-            <button
-              type="button"
-              onClick={() => setShowBackendConfig(!showBackendConfig)}
-              className="text-[11px] text-gray-500 hover:text-cyan-400 transition inline-flex items-center gap-1.5 mx-auto"
-            >
-              <Settings className="w-3 h-3" />
-              <span>{customBackend ? `Server: ${customBackend}` : 'Configure Backend Server'}</span>
-            </button>
           </div>
         </div>
       </div>
